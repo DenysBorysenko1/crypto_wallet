@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  application:
+    build:
+      context: .
+    links:
+      - database
+    ports:
+      - 3000:3000
+
+  database:
+    image: postgres:11.3
+    ports:
+      - 54321:5432
+    environment:
+      - LC_ALL=C.UTF-8
+      - POSTGRES_DB=app
+      - POSTGRES_USER=app
+      - POSTGRES_PASSWORD=app
